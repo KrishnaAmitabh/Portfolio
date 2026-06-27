@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Bug Tracker | Krishna Amitabh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --primary: #3b82f6;
+            --critical: #ef4444;
+            --high: #f97316;
+            --low: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { background-color: var(--bg); color: var(--text-main); padding: 30px; }
+        
+        header { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 24px; color: var(--text-main); }
+        .back-btn { padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; color: var(--text-main); background: var(--surface); }
+        
+        .board { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; }
+        .column { flex: 1; min-width: 300px; background: #f1f5f9; border-radius: 8px; padding: 15px; }
+        .column-header { font-weight: 600; margin-bottom: 15px; display: flex; justify-content: space-between; color: var(--text-light); }
+        
+        .bug-card { background: var(--surface); padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 10px; border-left: 4px solid transparent; cursor: grab; }
+        .bug-card:active { cursor: grabbing; }
+        
+        .bug-id { font-size: 12px; color: var(--text-light); margin-bottom: 5px; }
+        .bug-title { font-weight: 600; font-size: 14px; margin-bottom: 10px; }
+        
+        .badges { display: flex; gap: 8px; }
+        .badge { font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+        
+        /* Severities */
+        .critical { border-left-color: var(--critical); }
+        .badge-critical { background: #fee2e2; color: var(--critical); }
+        
+        .high { border-left-color: var(--high); }
+        .badge-high { background: #ffedd5; color: var(--high); }
+        
+        .low { border-left-color: var(--low); }
+        .badge-low { background: #d1fae5; color: var(--low); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1><i class="fas fa-bug"></i> QA Manual Testing Dashboard</h1>
+            <p style="color: var(--text-light); font-size: 14px; margin-top: 5px;">Tracking and validating UI/API issues for E-commerce portals.</p>
+        </div>
+        <a href="index.html" class="back-btn">Back to Portfolio</a>
+    </header>
+
+    <div class="board">
+        <!-- Open Bugs -->
+        <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)" id="col-open">
+            <div class="column-header"><span>Open (To Do)</span> <span>3</span></div>
+            
+            <div class="bug-card critical" draggable="true" ondragstart="drag(event)" id="bug1">
+                <div class="bug-id">BUG-1042 • API Error</div>
+                <div class="bug-title">Checkout Payment Gateway Timeout on Mobile Web</div>
+                <div class="badges"><span class="badge badge-critical">Critical</span></div>
+            </div>
+
+            <div class="bug-card high" draggable="true" ondragstart="drag(event)" id="bug2">
+                <div class="bug-id">BUG-1043 • UI Layout</div>
+                <div class="bug-title">Product Image Overlaps Description Text in Safari</div>
+                <div class="badges"><span class="badge badge-high">High</span></div>
+            </div>
+        </div>
+
+        <!-- In Progress -->
+        <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)" id="col-progress">
+            <div class="column-header"><span>In Progress</span> <span>1</span></div>
+            
+            <div class="bug-card low" draggable="true" ondragstart="drag(event)" id="bug3">
+                <div class="bug-id">BUG-1039 • Content</div>
+                <div class="bug-title">Typo in the "Terms and Conditions" footer link</div>
+                <div class="badges"><span class="badge badge-low">Low</span></div>
+            </div>
+        </div>
+
+        <!-- Fixed / Verified -->
+        <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)" id="col-verified">
+            <div class="column-header"><span>Verified (Done)</span> <span>2</span></div>
+            
+            <div class="bug-card high" draggable="true" ondragstart="drag(event)" id="bug4">
+                <div class="bug-id">BUG-1030 • Functionality</div>
+                <div class="bug-title">Search Bar not returning results for exact match queries</div>
+                <div class="badges"><span class="badge badge-high">High</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple Drag and Drop functionality
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            // Ensure we are appending to the column, not another card
+            let target = ev.target;
+            while(target && !target.classList.contains('column')) {
+                target = target.parentNode;
+            }
+            if(target) {
+                target.appendChild(document.getElementById(data));
+            }
+        }
+    </script>
+</body>
+</html>
