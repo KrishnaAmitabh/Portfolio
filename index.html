@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Amitabh | Project Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --hover-accent: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hub-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header-profile {
+            margin-bottom: 40px;
+        }
+
+        .header-profile h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header-profile h1 span {
+            color: var(--accent);
+        }
+
+        .header-profile p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hub-container">
+        
+        <div class="header-profile">
+            <h1>Krishna <span>Amitabh</span></h1>
+            <p>Bio-Sciences Expert | Data Operations | Tech Enthusiast</p>
+            <p style="font-size: 13px; margin-top: 5px; color: #64748b;">Select a project below to view the interactive showcase.</p>
+        </div>
+
+        <div class="projects-grid">
+            
+            <a href="KAPortfolio.html" class="project-card">
+                <span class="badge">Primary</span>
+                <i class="fas fa-user-circle card-icon"></i>
+                <div class="card-title">Main Portfolio</div>
+                <div class="card-desc">Complete professional background, core skills, and academic achievements.</div>
+            </a>
+
+            <a href="KAdataoperations.html" class="project-card">
+                <span class="badge">Project</span>
+                <i class="fas fa-database card-icon"></i>
+                <div class="card-title">Data Operations</div>
+                <div class="card-desc">Interactive dashboard showcasing high-speed data cleaning and migration accuracy.</div>
+            </a>
+
+            <a href="KABugreport.html" class="project-card">
+                <span class="badge">Project</span>
+                <i class="fas fa-bug card-icon"></i>
+                <div class="card-title">QA Bug Tracker</div>
+                <div class="card-desc">Kanban-style manual testing board simulating real-time UI/API issue tracking.</div>
+            </a>
+
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Krishna Amitabh Workspace</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
